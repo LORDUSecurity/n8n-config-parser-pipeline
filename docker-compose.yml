@@ -1,0 +1,29 @@
+services:
+  n8n:
+    build:
+      context: .
+      dockerfile: n8n/Dockerfile
+    container_name: n8n-parser-pipeline
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      # Allow Code nodes to use fs and path modules
+      NODE_FUNCTION_ALLOW_BUILTIN: fs,path
+
+      # Binary data storage mode (memory = base64 in-memory)
+      N8N_DEFAULT_BINARY_DATA_MODE: memory
+
+      # Allow HTTP for local development
+      N8N_SECURE_COOKIE: "false"
+
+      # Timezone for $now / $today variables
+      GENERIC_TIMEZONE: UTC
+    volumes:
+      # n8n internal data (workflows, credentials) — survives rebuilds
+      - n8n_home:/home/node/.n8n
+      # Shared pipeline workspace — visible from host
+      - ./data:/data
+
+volumes:
+  n8n_home:

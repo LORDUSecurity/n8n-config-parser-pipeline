@@ -1,0 +1,9 @@
+name,location,type,status,capacity
+Server-A1,Datacenter-1,Compute,Active,85%
+Server-A2,Datacenter-1,Compute,Active,72%
+Server-B1,Datacenter-2,Storage,Active,91%
+Server-B2,Datacenter-2,Storage,Maintenance,0%
+Server-C1,Edge-Location-1,Gateway,Active,45%
+Server-C2,Edge-Location-1,Gateway,Active,63%
+Server-D1,Edge-Location-2,Compute,Active,88%
+Server-D2,Edge-Location-2,Compute,Inactive,0%
